@@ -1,5 +1,0 @@
-experiment,pid,start,end,remaining,state
-1,2,0,2,0,FINISHED
-1,1,2,4,2,READY
-1,1,4,6,0,FINISHED
-2,1,0,1,0,FINISHED

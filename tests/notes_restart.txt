@@ -1,4 +1,0 @@
-note read revision
-note delete revision
-note read revision
-quit

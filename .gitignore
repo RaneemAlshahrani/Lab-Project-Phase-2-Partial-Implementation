@@ -1,8 +1,0 @@
-minios
-minios_asan
-tests/test_core
-tests/test_core_asan
-data/*.log
-data/*.csv
-data/notes/*.txt
-__pycache__/

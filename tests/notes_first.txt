@@ -1,7 +1,0 @@
-note create revision CPU scheduling notes
-note append revision Round robin uses a FIFO queue.
-note read revision
-note read missing
-quantum 0
-check
-quit
