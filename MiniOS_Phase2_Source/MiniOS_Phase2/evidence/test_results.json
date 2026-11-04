@@ -1,0 +1,92 @@
+{
+  "suite": "GCC standard build",
+  "cases": [
+    {
+      "id": "T1",
+      "title": "Reference scheduling and metrics",
+      "expected": "Exact proposal trace and metrics.",
+      "observed": "Order P1,P2,P3,P1,P2; ends 2,4,6,8,9; means 7.67/4.67/2.00.",
+      "status": "PASS"
+    },
+    {
+      "id": "T2",
+      "title": "Persistent note lifecycle",
+      "expected": "Saved bytes survive restart; append and delete succeed.",
+      "observed": "Exact bytes preserved across process restart; duplicate create rejected; deletion verified.",
+      "status": "PASS"
+    },
+    {
+      "id": "T3",
+      "title": "Block/wake scheduling",
+      "expected": "WAITING excluded; wake appends exactly once.",
+      "observed": "P2 executes while P1 is WAITING; wake enqueues P1 once; duplicate wake rejected.",
+      "status": "PASS"
+    },
+    {
+      "id": "T4",
+      "title": "Empty, single, and short burst",
+      "expected": "Safe idle; slice=min(quantum, remaining).",
+      "observed": "Empty run stays at tick 0; burst 1 with quantum 10 completes at tick 1.",
+      "status": "PASS"
+    },
+    {
+      "id": "T5",
+      "title": "20-task capacity",
+      "expected": "First 20 accepted; 21st rejected without corruption.",
+      "observed": "20 records accepted; record 21 rejected; 20 payload bytes tracked before shutdown.",
+      "status": "PASS"
+    },
+    {
+      "id": "T6",
+      "title": "Exact memory budget",
+      "expected": "65,536 accepted; extra byte rejected; memory reclaimed.",
+      "observed": "65,536-byte allocation accepted; extra byte rejected; completion returns usage to zero.",
+      "status": "PASS"
+    },
+    {
+      "id": "T7",
+      "title": "Input validation",
+      "expected": "Invalid numeric, name, oversized commands leave no partial task.",
+      "observed": "11 invalid/oversized commands rejected; next valid task gets P1; oversized tail discarded.",
+      "status": "PASS"
+    },
+    {
+      "id": "T8",
+      "title": "File failure recovery",
+      "expected": "Read/open/write failures reported; CLI continues.",
+      "observed": "Missing/read/path/open errors recover; /dev/full write/close failure is reported.",
+      "status": "PASS"
+    },
+    {
+      "id": "T9",
+      "title": "Invalid transitions and PIDs",
+      "expected": "Invalid transitions rejected without queue changes.",
+      "observed": "Unknown PIDs, wake READY, and block/wake FINISHED rejected; invariants hold.",
+      "status": "PASS"
+    },
+    {
+      "id": "T10",
+      "title": "Forced allocation failure",
+      "expected": "No PID, task, queue, or memory counter committed.",
+      "observed": "Forced NULL leaves existing 10 bytes unchanged; next task gets P2 and runs normally.",
+      "status": "PASS"
+    },
+    {
+      "id": "T11",
+      "title": "Memory lifecycle cleanup",
+      "expected": "Zero tracked payload bytes after completion/reset/exit.",
+      "observed": "Completion, reset with WAITING task, and exit with READY/WAITING tasks release all payloads.",
+      "status": "PASS"
+    },
+    {
+      "id": "T12",
+      "title": "Study session completion",
+      "expected": "Exactly one notice on actual completion.",
+      "observed": "Three slices (2+2+1) complete at tick 5; console and event log each contain one notice.",
+      "status": "PASS"
+    }
+  ],
+  "core_assertions": "PASS",
+  "core_output": "CORE ASSERTIONS PASS: exact metrics, blocked wait, late arrivals, rollback, capacity, queue wrap, cleanup.\n",
+  "core_diagnostics": ""
+}

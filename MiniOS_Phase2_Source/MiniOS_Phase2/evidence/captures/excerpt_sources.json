@@ -1,0 +1,50 @@
+[
+  {
+    "image": "reference.png",
+    "source": "reference_console.txt",
+    "start_line": 10,
+    "end_line": 25,
+    "title": "Round robin and measured metrics",
+    "method": "faithful rendering of captured stdout; visual wrapping only"
+  },
+  {
+    "image": "states.png",
+    "source": "resources_console.txt",
+    "start_line": 8,
+    "end_line": 25,
+    "title": "Blocking, wake and state validation",
+    "method": "faithful rendering of captured stdout; visual wrapping only"
+  },
+  {
+    "image": "budget.png",
+    "source": "resources_console.txt",
+    "start_line": 28,
+    "end_line": 48,
+    "title": "Memory budget, failure recovery and shutdown",
+    "method": "faithful rendering of captured stdout; visual wrapping only"
+  },
+  {
+    "image": "notes.png",
+    "source": "notes_console.txt",
+    "start_line": 4,
+    "end_line": 11,
+    "title": "Create, append and read a persistent note",
+    "method": "faithful rendering of captured stdout; visual wrapping only"
+  },
+  {
+    "image": "restart.png",
+    "source": "notes_restart_console.txt",
+    "start_line": 4,
+    "end_line": 13,
+    "title": "A new process reopens and deletes the note",
+    "method": "faithful rendering of captured stdout; visual wrapping only"
+  },
+  {
+    "image": "tests.png",
+    "source": "test_console.txt",
+    "start_line": 1,
+    "end_line": 14,
+    "title": "Executed integration tests and C assertions",
+    "method": "faithful rendering of captured stdout; visual wrapping only"
+  }
+]

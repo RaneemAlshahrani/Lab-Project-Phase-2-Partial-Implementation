@@ -1,0 +1,26 @@
+experiment=1 tick=0 event=START pid=0 virtual clock initialized
+experiment=1 tick=0 event=CREATE pid=1 state=READY burst=3 bytes=128 used_bytes=128 session=1
+experiment=1 tick=0 event=CREATE pid=2 state=READY burst=4 bytes=128 used_bytes=256 session=0
+experiment=1 tick=0 event=CREATE pid=3 state=READY burst=1 bytes=64 used_bytes=320 session=0
+experiment=1 tick=0 event=CREATE pid=4 state=READY burst=5 bytes=256 used_bytes=576 session=0
+experiment=1 tick=0 event=CREATE pid=5 state=READY burst=2 bytes=64 used_bytes=640 session=0
+experiment=1 tick=0 event=DISPATCH pid=1 READY->RUNNING
+experiment=1 tick=2 event=SLICE pid=1 start=0 end=2 remaining=1 state=READY used_bytes=640
+experiment=1 tick=2 event=DISPATCH pid=2 READY->RUNNING
+experiment=1 tick=4 event=SLICE pid=2 start=2 end=4 remaining=2 state=READY used_bytes=640
+experiment=1 tick=4 event=DISPATCH pid=3 READY->RUNNING
+experiment=1 tick=5 event=SLICE pid=3 start=4 end=5 remaining=0 state=FINISHED used_bytes=576
+experiment=1 tick=5 event=DISPATCH pid=4 READY->RUNNING
+experiment=1 tick=7 event=SLICE pid=4 start=5 end=7 remaining=3 state=READY used_bytes=576
+experiment=1 tick=7 event=DISPATCH pid=5 READY->RUNNING
+experiment=1 tick=9 event=SLICE pid=5 start=7 end=9 remaining=0 state=FINISHED used_bytes=512
+experiment=1 tick=9 event=DISPATCH pid=1 READY->RUNNING
+experiment=1 tick=10 event=SLICE pid=1 start=9 end=10 remaining=0 state=FINISHED used_bytes=384
+experiment=1 tick=10 event=SESSION_COMPLETE pid=1 Focus
+experiment=1 tick=10 event=DISPATCH pid=2 READY->RUNNING
+experiment=1 tick=12 event=SLICE pid=2 start=10 end=12 remaining=0 state=FINISHED used_bytes=256
+experiment=1 tick=12 event=DISPATCH pid=4 READY->RUNNING
+experiment=1 tick=14 event=SLICE pid=4 start=12 end=14 remaining=1 state=READY used_bytes=256
+experiment=1 tick=14 event=DISPATCH pid=4 READY->RUNNING
+experiment=1 tick=15 event=SLICE pid=4 start=14 end=15 remaining=0 state=FINISHED used_bytes=0
+experiment=1 tick=15 event=SHUTDOWN pid=0 used_bytes=0 allocations=0

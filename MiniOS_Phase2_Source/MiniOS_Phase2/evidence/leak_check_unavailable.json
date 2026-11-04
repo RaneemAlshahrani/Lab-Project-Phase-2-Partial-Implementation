@@ -1,0 +1,92 @@
+{
+  "suite": "ASan+UBSan+leak detection",
+  "cases": [
+    {
+      "id": "T1",
+      "title": "Reference scheduling and metrics",
+      "expected": "Exact proposal trace and metrics.",
+      "observed": "Process failed (1): ==48==Can't open /proc/47/task for reading.\n==47==LeakSanitizer has encountered a fatal error.\n==47==HINT: For debugging, try setting environment variable LSAN_OPTIONS=verbosity=1:log_threads=1\n==47==HINT: LeakSanitizer does not work under ptrace (strace, gdb, etc)\n\n",
+      "status": "FAIL"
+    },
+    {
+      "id": "T2",
+      "title": "Persistent note lifecycle",
+      "expected": "Saved bytes survive restart; append and delete succeed.",
+      "observed": "Process failed (1): ==50==Can't open /proc/49/task for reading.\n==49==LeakSanitizer has encountered a fatal error.\n==49==HINT: For debugging, try setting environment variable LSAN_OPTIONS=verbosity=1:log_threads=1\n==49==HINT: LeakSanitizer does not work under ptrace (strace, gdb, etc)\n\n",
+      "status": "FAIL"
+    },
+    {
+      "id": "T3",
+      "title": "Block/wake scheduling",
+      "expected": "WAITING excluded; wake appends exactly once.",
+      "observed": "Process failed (1): ==52==Can't open /proc/51/task for reading.\n==51==LeakSanitizer has encountered a fatal error.\n==51==HINT: For debugging, try setting environment variable LSAN_OPTIONS=verbosity=1:log_threads=1\n==51==HINT: LeakSanitizer does not work under ptrace (strace, gdb, etc)\n\n",
+      "status": "FAIL"
+    },
+    {
+      "id": "T4",
+      "title": "Empty, single, and short burst",
+      "expected": "Safe idle; slice=min(quantum, remaining).",
+      "observed": "Process failed (1): ==54==Can't open /proc/53/task for reading.\n==53==LeakSanitizer has encountered a fatal error.\n==53==HINT: For debugging, try setting environment variable LSAN_OPTIONS=verbosity=1:log_threads=1\n==53==HINT: LeakSanitizer does not work under ptrace (strace, gdb, etc)\n\n",
+      "status": "FAIL"
+    },
+    {
+      "id": "T5",
+      "title": "20-task capacity",
+      "expected": "First 20 accepted; 21st rejected without corruption.",
+      "observed": "Process failed (1): ==56==Can't open /proc/55/task for reading.\n==55==LeakSanitizer has encountered a fatal error.\n==55==HINT: For debugging, try setting environment variable LSAN_OPTIONS=verbosity=1:log_threads=1\n==55==HINT: LeakSanitizer does not work under ptrace (strace, gdb, etc)\n\n",
+      "status": "FAIL"
+    },
+    {
+      "id": "T6",
+      "title": "Exact memory budget",
+      "expected": "65,536 accepted; extra byte rejected; memory reclaimed.",
+      "observed": "Process failed (1): ==58==Can't open /proc/57/task for reading.\n==57==LeakSanitizer has encountered a fatal error.\n==57==HINT: For debugging, try setting environment variable LSAN_OPTIONS=verbosity=1:log_threads=1\n==57==HINT: LeakSanitizer does not work under ptrace (strace, gdb, etc)\n\n",
+      "status": "FAIL"
+    },
+    {
+      "id": "T7",
+      "title": "Input validation",
+      "expected": "Invalid numeric, name, oversized commands leave no partial task.",
+      "observed": "Process failed (1): ==60==Can't open /proc/59/task for reading.\n==59==LeakSanitizer has encountered a fatal error.\n==59==HINT: For debugging, try setting environment variable LSAN_OPTIONS=verbosity=1:log_threads=1\n==59==HINT: LeakSanitizer does not work under ptrace (strace, gdb, etc)\n\n",
+      "status": "FAIL"
+    },
+    {
+      "id": "T8",
+      "title": "File failure recovery",
+      "expected": "Read/open/write failures reported; CLI continues.",
+      "observed": "Process failed (1): ==62==Can't open /proc/61/task for reading.\n==61==LeakSanitizer has encountered a fatal error.\n==61==HINT: For debugging, try setting environment variable LSAN_OPTIONS=verbosity=1:log_threads=1\n==61==HINT: LeakSanitizer does not work under ptrace (strace, gdb, etc)\n\n",
+      "status": "FAIL"
+    },
+    {
+      "id": "T9",
+      "title": "Invalid transitions and PIDs",
+      "expected": "Invalid transitions rejected without queue changes.",
+      "observed": "Process failed (1): ==64==Can't open /proc/63/task for reading.\n==63==LeakSanitizer has encountered a fatal error.\n==63==HINT: For debugging, try setting environment variable LSAN_OPTIONS=verbosity=1:log_threads=1\n==63==HINT: LeakSanitizer does not work under ptrace (strace, gdb, etc)\n\n",
+      "status": "FAIL"
+    },
+    {
+      "id": "T10",
+      "title": "Forced allocation failure",
+      "expected": "No PID, task, queue, or memory counter committed.",
+      "observed": "Process failed (1): ==66==Can't open /proc/65/task for reading.\n==65==LeakSanitizer has encountered a fatal error.\n==65==HINT: For debugging, try setting environment variable LSAN_OPTIONS=verbosity=1:log_threads=1\n==65==HINT: LeakSanitizer does not work under ptrace (strace, gdb, etc)\n\n",
+      "status": "FAIL"
+    },
+    {
+      "id": "T11",
+      "title": "Memory lifecycle cleanup",
+      "expected": "Zero tracked payload bytes after completion/reset/exit.",
+      "observed": "Process failed (1): ==68==Can't open /proc/67/task for reading.\n==67==LeakSanitizer has encountered a fatal error.\n==67==HINT: For debugging, try setting environment variable LSAN_OPTIONS=verbosity=1:log_threads=1\n==67==HINT: LeakSanitizer does not work under ptrace (strace, gdb, etc)\n\n",
+      "status": "FAIL"
+    },
+    {
+      "id": "T12",
+      "title": "Study session completion",
+      "expected": "Exactly one notice on actual completion.",
+      "observed": "Process failed (1): ==70==Can't open /proc/69/task for reading.\n==69==LeakSanitizer has encountered a fatal error.\n==69==HINT: For debugging, try setting environment variable LSAN_OPTIONS=verbosity=1:log_threads=1\n==69==HINT: LeakSanitizer does not work under ptrace (strace, gdb, etc)\n\n",
+      "status": "FAIL"
+    }
+  ],
+  "core_assertions": "FAIL",
+  "core_output": "",
+  "core_diagnostics": "==72==Can't open /proc/71/task for reading.\n==71==LeakSanitizer has encountered a fatal error.\n==71==HINT: For debugging, try setting environment variable LSAN_OPTIONS=verbosity=1:log_threads=1\n==71==HINT: LeakSanitizer does not work under ptrace (strace, gdb, etc)\n"
+}

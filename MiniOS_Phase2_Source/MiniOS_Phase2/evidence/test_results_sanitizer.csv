@@ -1,0 +1,13 @@
+id,title,expected,observed,status
+T1,Reference scheduling and metrics,Exact proposal trace and metrics.,"Order P1,P2,P3,P1,P2; ends 2,4,6,8,9; means 7.67/4.67/2.00.",PASS
+T2,Persistent note lifecycle,Saved bytes survive restart; append and delete succeed.,Exact bytes preserved across process restart; duplicate create rejected; deletion verified.,PASS
+T3,Block/wake scheduling,WAITING excluded; wake appends exactly once.,P2 executes while P1 is WAITING; wake enqueues P1 once; duplicate wake rejected.,PASS
+T4,"Empty, single, and short burst","Safe idle; slice=min(quantum, remaining).",Empty run stays at tick 0; burst 1 with quantum 10 completes at tick 1.,PASS
+T5,20-task capacity,First 20 accepted; 21st rejected without corruption.,20 records accepted; record 21 rejected; 20 payload bytes tracked before shutdown.,PASS
+T6,Exact memory budget,"65,536 accepted; extra byte rejected; memory reclaimed.","65,536-byte allocation accepted; extra byte rejected; completion returns usage to zero.",PASS
+T7,Input validation,"Invalid numeric, name, oversized commands leave no partial task.",11 invalid/oversized commands rejected; next valid task gets P1; oversized tail discarded.,PASS
+T8,File failure recovery,Read/open/write failures reported; CLI continues.,Missing/read/path/open errors recover; /dev/full write/close failure is reported.,PASS
+T9,Invalid transitions and PIDs,Invalid transitions rejected without queue changes.,"Unknown PIDs, wake READY, and block/wake FINISHED rejected; invariants hold.",PASS
+T10,Forced allocation failure,"No PID, task, queue, or memory counter committed.",Forced NULL leaves existing 10 bytes unchanged; next task gets P2 and runs normally.,PASS
+T11,Memory lifecycle cleanup,Zero tracked payload bytes after completion/reset/exit.,"Completion, reset with WAITING task, and exit with READY/WAITING tasks release all payloads.",PASS
+T12,Study session completion,Exactly one notice on actual completion.,Three slices (2+2+1) complete at tick 5; console and event log each contain one notice.,PASS

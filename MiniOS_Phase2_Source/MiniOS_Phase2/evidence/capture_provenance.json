@@ -1,0 +1,8 @@
+{
+  "application": "C11 MiniOS for a Study Room",
+  "commands": [
+    "./minios --batch --data-dir evidence/SCENARIO < tests/SCENARIO.txt",
+    "python3 tests/run_tests.py"
+  ],
+  "note": "Console text is original captured stdout; image excerpts are rendered from these files."
+}
