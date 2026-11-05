@@ -27,25 +27,38 @@ project, rather than a measured percentage of source code.
 |---|---|
 | `src/` | Nine commented C implementation files. |
 | `include/` | Eight commented headers containing interfaces and shared types. |
+| `docs/` | Four screenshots demonstrating the working system and the Phase 2 progress report. |
+| `data/` | Runtime logs, execution traces, and exported task metrics. |
 | `Makefile` | Build, run, and executable cleanup commands. |
 | `README.md` | Project summary and build/run instructions. |
+| `minios` | Compiled application executable; rebuild with `make` for your environment. |
 
-The progress report is supplied separately as an editable Word document.
+### Documentation and screenshots
+
+- [Phase 2 Progress Report](docs/Progress%20Report.pdf)
+- [Screenshot 1](docs/Photo1.png): Application startup, command help, and task creation.
+- [Screenshot 2](docs/Photo2.png): Task blocking, waking, and round-robin execution.
+- [Screenshot 3](docs/Photo3.png): Task metrics, memory verification, CSV export, and note operations.
+- [Screenshot 4](docs/Photo4.png): Note deletion, reset, forced allocation failure handling, and clean shutdown.
 
 ## Build and run
 
 Use Linux or Ubuntu through WSL, with GCC and GNU Make. The application uses
 only the standard C library.
 
-Extract the ZIP and open a terminal inside the `MiniOS_Phase2` folder:
+After extracting the GitHub ZIP into `~/Downloads`, run:
 
 ```sh
+cd ~/Downloads/Lab-Project-Phase-2-Partial-Implementation-main
 make
 make run
 ```
 
-The program displays `minios>`. Enter `help` to see its commands. Run `make`
-commands in the host terminal; enter the commands below inside MiniOS.
+If you extracted the ZIP elsewhere, adjust the folder path. Run these commands
+from the project folder containing `Makefile`.
+
+The program displays `minios>`. Enter `help` to see its commands.
+Run `make` commands in the Linux terminal; enter MiniOS commands at `minios>`.
 
 ## Commands
 
@@ -88,10 +101,14 @@ With quantum 2, dispatch order is P1, P2, P3, P1, P2; execution ends at tick 9.
 
 ## Runtime files and cleanup
 
-`make run` creates `data/notes/` automatically. Notes, `data/events.log`, and
-`data/trace.csv` are created during use; `export` writes `data/metrics.csv`.
-These are application outputs and are not included in this source ZIP.
+`make run` creates `data/notes/` automatically. During execution, the application
+writes `data/events.log` and `data/trace.csv`; `export` writes
+`data/metrics.csv`. Notes are stored in `data/notes/`.
+
+The repository currently includes generated logs and CSV outputs.
+The four demonstration screenshots and PDF progress report are in `docs/`.
 
 Notes survive reset and restart; task records and the clock do not survive a
-restart. `quit` and EOF free outstanding payloads and close files. `make clean`
-removes the executable and preserves saved notes and other runtime outputs.
+restart. `quit` and EOF free outstanding payloads and close files.
+`make clean` removes the executable and preserves saved notes and other
+runtime outputs.
