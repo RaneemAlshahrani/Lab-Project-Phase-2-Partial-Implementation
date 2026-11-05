@@ -101,14 +101,21 @@ With quantum 2, dispatch order is P1, P2, P3, P1, P2; execution ends at tick 9.
 
 ## Runtime files and cleanup
 
-`make run` creates `data/notes/` automatically. During execution, the application
-writes `data/events.log` and `data/trace.csv`; `export` writes
-`data/metrics.csv`. Notes are stored in `data/notes/`.
+`make run` creates `data/notes/` automatically. Notes are saved there when
+created and removed when deleted. The folder is empty after the demonstration
+because its sample note is deleted.
 
-The repository currently includes generated logs and CSV outputs.
-The four demonstration screenshots and PDF progress report are in `docs/`.
+During execution, the application writes `data/events.log` and
+`data/trace.csv`. The `export` command saves completed-task metrics to
+`data/metrics.csv`. Generated logs and CSV outputs are currently included
+in the repository.
 
-Notes survive reset and restart; task records and the clock do not survive a
-restart. `quit` and EOF free outstanding payloads and close files.
-`make clean` removes the executable and preserves saved notes and other
-runtime outputs.
+The `docs/` folder contains four demonstration screenshots and the PDF
+progress report.
+
+Saved notes survive reset and restart unless explicitly deleted. Task records
+and the virtual clock do not survive restart. Both `quit` and EOF release
+outstanding payloads and close files.
+
+`make clean` removes the executable while preserving saved notes, logs,
+and CSV outputs.
