@@ -1,0 +1,4 @@
+pid,name,arrival,burst,first_run,completion,turnaround,waiting,response
+1,Study,0,6,0,11,11,5,0
+2,Review,0,4,6,13,13,7,6
+3,Practice,0,3,2,9,9,6,2
